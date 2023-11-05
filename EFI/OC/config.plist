@@ -207,6 +207,8 @@
 		</array>
 		<key>Quirks</key>
 		<dict>
+			<key>ResizeAppleGpuBars</key>
+			<integer>-1</integer>
 			<key>AllowRelocationBlock</key>
 			<false/>
 			<key>AvoidRuntimeDefrag</key>
@@ -522,6 +524,8 @@
 		<key>Block</key>
 		<array>
 			<dict>
+				<key>Strategy</key>
+				<string>Disable</string>
 				<key>Arch</key>
 				<string>Any</string>
 				<key>Comment</key>
@@ -787,6 +791,12 @@
 		</array>
 		<key>Quirks</key>
 		<dict>
+			<key>ForceAquantiaEthernet</key>
+			<false/>
+			<key>DisableIoMapperMapping</key>
+			<false/>
+			<key>CustomPciSerialDevice</key>
+			<false/>
 			<key>AppleCpuPmCfgLock</key>
 			<false/>
 			<key>AppleXcpmCfgLock</key>
@@ -842,10 +852,21 @@
 	</dict>
 	<key>Misc</key>
 	<dict>
+		<key>Serial</key>
+		<dict>
+			<key>Init</key>
+			<false/>
+			<key>Override</key>
+			<false/>
+		</dict>
 		<key>BlessOverride</key>
 		<array/>
 		<key>Boot</key>
 		<dict>
+			<key>InstanceIdentifier</key>
+			<string></string>
+			<key>HibernateSkipsPicker</key>
+			<false/>
 			<key>ConsoleAttributes</key>
 			<integer>0</integer>
 			<key>HibernateMode</key>
@@ -875,6 +896,8 @@
 		</dict>
 		<key>Debug</key>
 		<dict>
+			<key>LogModules</key>
+			<string>*</string>
 			<key>AppleDebug</key>
 			<false/>
 			<key>ApplePanic</key>
@@ -885,8 +908,6 @@
 			<integer>0</integer>
 			<key>DisplayLevel</key>
 			<integer>2147483650</integer>
-			<key>SerialInit</key>
-			<false/>
 			<key>SysReport</key>
 			<false/>
 			<key>Target</key>
@@ -915,12 +936,8 @@
 		</array>
 		<key>Security</key>
 		<dict>
-			<key>AllowNvramReset</key>
-			<true/>
 			<key>AllowSetDefault</key>
 			<true/>
-			<key>AllowToggleSip</key>
-			<false/>
 			<key>ApECID</key>
 			<integer>0</integer>
 			<key>AuthRestart</key>
@@ -956,9 +973,7 @@
 			<key>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14</key>
 			<dict>
 				<key>DefaultBackgroundColor</key>
-				<data>AAAAAA==</data>
-				<key>UIScale</key>
-				<data>AQ==</data>
+				<data>v7+/AA==</data>
 			</dict>
 			<key>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102</key>
 			<dict>
@@ -985,7 +1000,6 @@
 		<dict>
 			<key>4D1EDE05-38C7-4A6A-9CC6-4BCCA8B38C14</key>
 			<array>
-				<string>UIScale</string>
 				<string>DefaultBackgroundColor</string>
 			</array>
 			<key>4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102</key>
@@ -998,8 +1012,6 @@
 				<string>ForceDisplayRotationInEFI</string>
 			</array>
 		</dict>
-		<key>LegacyEnable</key>
-		<false/>
 		<key>LegacyOverwrite</key>
 		<false/>
 		<key>LegacySchema</key>
@@ -1092,6 +1104,20 @@
 		</dict>
 		<key>AppleInput</key>
 		<dict>
+			<key>PointerPollMin</key>
+			<integer>10</integer>
+			<key>PointerPollMax</key>
+			<integer>80</integer>
+			<key>PointerPollMask</key>
+			<integer>-1</integer>
+			<key>PointerDwellRadius</key>
+			<integer>0</integer>
+			<key>PointerDwellDoubleClickTimeout</key>
+			<integer>0</integer>
+			<key>PointerDwellClickTimeout</key>
+			<integer>0</integer>
+			<key>GraphicsInputMirroring</key>
+			<true/>
 			<key>AppleEvent</key>
 			<string>Builtin</string>
 			<key>CustomDelays</key>
@@ -1107,23 +1133,27 @@
 		</dict>
 		<key>Audio</key>
 		<dict>
+			<key>MinimumAudibleGain</key>
+			<integer>-55</integer>
+			<key>MinimumAssistGain</key>
+			<integer>-30</integer>
+			<key>MaximumGain</key>
+			<integer>-15</integer>
+			<key>DisconnectHda</key>
+			<false/>
+			<key>AudioOutMask</key>
+			<integer>1</integer>
 			<key>AudioCodec</key>
 			<integer>0</integer>
 			<key>AudioDevice</key>
 			<string>PciRoot(0x0)/Pci(0x1b,0x0)</string>
-			<key>AudioOut</key>
-			<integer>0</integer>
 			<key>AudioSupport</key>
 			<false/>
-			<key>MinimumVolume</key>
-			<integer>20</integer>
 			<key>PlayChime</key>
 			<string>Auto</string>
 			<key>ResetTrafficClass</key>
 			<false/>
 			<key>SetupDelay</key>
-			<integer>0</integer>
-			<key>VolumeAmplifier</key>
 			<integer>0</integer>
 		</dict>
 		<key>ConnectDrivers</key>
@@ -1131,6 +1161,8 @@
 		<key>Drivers</key>
 		<array>
 			<dict>
+				<key>LoadEarly</key>
+				<false/>
 				<key>Arguments</key>
 				<string></string>
 				<key>Comment</key>
@@ -1141,6 +1173,8 @@
 				<string>ResetNvramEntry.efi</string>
 			</dict>
 			<dict>
+				<key>LoadEarly</key>
+				<false/>
 				<key>Arguments</key>
 				<string></string>
 				<key>Comment</key>
@@ -1151,6 +1185,8 @@
 				<string>OpenCanopy.efi</string>
 			</dict>
 			<dict>
+				<key>LoadEarly</key>
+				<false/>
 				<key>Arguments</key>
 				<string></string>
 				<key>Comment</key>
@@ -1161,6 +1197,8 @@
 				<string>OpenRuntime.efi</string>
 			</dict>
 			<dict>
+				<key>LoadEarly</key>
+				<false/>
 				<key>Arguments</key>
 				<string></string>
 				<key>Comment</key>
@@ -1192,6 +1230,16 @@
 		</dict>
 		<key>Output</key>
 		<dict>
+			<key>ReconnectGraphicsOnConnect</key>
+			<false/>
+			<key>InitialMode</key>
+			<string>Auto</string>
+			<key>GopBurstMode</key>
+			<false/>
+			<key>ConsoleFont</key>
+			<string></string>
+			<key>UIScale</key>
+			<integer>0</integer>
 			<key>ClearScreenOnModeSwitch</key>
 			<false/>
 			<key>ConsoleMode</key>
@@ -1221,6 +1269,8 @@
 		</dict>
 		<key>ProtocolOverrides</key>
 		<dict>
+			<key>PciIo</key>
+			<false/>
 			<key>AppleAudio</key>
 			<false/>
 			<key>AppleBootPolicy</key>
@@ -1260,6 +1310,16 @@
 		</dict>
 		<key>Quirks</key>
 		<dict>
+			<key>ShimRetainProtocol</key>
+			<false/>
+			<key>ResizeUsePciRbIo</key>
+			<false/>
+			<key>ResizeGpuBars</key>
+			<integer>-1</integer>
+			<key>ForceOcWriteFlash</key>
+			<false/>
+			<key>EnableVmx</key>
+			<false/>
 			<key>ActivateHpetSupport</key>
 			<false/>
 			<key>DisableSecurityPolicy</key>
